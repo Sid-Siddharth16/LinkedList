@@ -1,0 +1,21 @@
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        if(head == null || head.next == null){
+            return head;
+        }
+        ListNode dummy = new ListNode(-1); // used to take access of new head after swapping .               
+        ListNode prev =  dummy;
+        ListNode curr = head;
+        while(curr != null && curr.next != null){
+            ListNode forw = curr.next;
+            prev.next = forw;
+            curr.next = forw.next;
+            forw.next = curr;
+            //update pointers
+            prev = curr;
+            curr = curr.next;
+        }
+        return dummy.next;
+        
+    }
+}
